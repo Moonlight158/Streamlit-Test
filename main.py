@@ -10,9 +10,6 @@ def bin_dist(k, n, p):
     return pd
 
 def main():
-    # input number
-    plt.rcParams['font.family'] = 'Malgun Gothic'
-
     st.title('이항 분포 시뮬레이터')
     n = st.number_input('총 시도 횟수를 입력해주세요! (1, 2, 3...)', 1, help='ex) 1, 10')
     p = st.number_input('성공 확률을 입력해주세요! (100% = 1.0)', help='ex) 0.1, 0.3')
