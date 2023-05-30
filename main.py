@@ -15,7 +15,7 @@ def main():
 
     st.title('이항 분포 시뮬레이터')
     n = st.number_input('총 시도 횟수를 입력해주세요! (1, 2, 3...)', 1, help='ex) 1, 10')
-    p = st.number_input('성공 확률을 입력해주세요! (100% = 1.0)', 0.5, help='ex) 0.1, 0.3')
+    p = st.number_input('성공 확률을 입력해주세요! (100% = 1.0)', help='ex) 0.1, 0.3')
 
     x = np.arange(n + 1)
     pd1 = np.array([bin_dist(k, n, p) for k in range(n + 1)])
