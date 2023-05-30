@@ -22,8 +22,8 @@ def main():
     fig, ax = plt.subplots()
     ax.plot(x, pd1)
     ax.set_title('n = {}, p={}'.format(n, p))
-    ax.set_xlabel('성공 횟수',fontdict={'fontname':'Malgun Gothic'})
-    ax.set_ylabel('기대 확률',fontdict={'fontname':'Malgun Gothic'})
+    ax.set_xlabel('Success Count')
+    ax.set_ylabel('Prob')
     st.pyplot(fig)
 
     helptip = '- 표의 우측 하단을 잡고 당기거나 표 영역에서 스크롤을 내리면 더 많은 정보를 볼 수 있어요!'
