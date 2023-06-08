@@ -2,6 +2,7 @@ import streamlit as st
 from scipy.stats import binom
 import plotly.graph_objects as go
 import numpy as np
+import pandas as pd
 
 def main():
     st.title('이항 분포 시뮬레이터')
@@ -25,7 +26,10 @@ def main():
 
     helptip = '- 표의 우측 하단을 잡고 당기거나 표 영역에서 스크롤을 내리면 더 많은 정보를 볼 수 있어요!'
     st.title('※ 확률값 상세', help=helptip)
-    st.write(yList)
+    st.write(pd.DataFrame({
+        '성공 횟수':xList,
+        '성공 확률':yList,
+        }))
 
 if __name__ == "__main__":
     main()
