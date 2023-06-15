@@ -4,6 +4,11 @@ import plotly.graph_objects as go
 import numpy as np
 import pandas as pd
 
+# Dataframe을 csv형태로 변환
+def convert_df(df):
+    return df.to_csv(index=False, float_format='%.6f').encode('utf-8')
+
+# main 함수(프로그램 동작하는 몸통)
 def main():
     st.title('이항 분포 시뮬레이터')
     n = st.number_input('총 시도 횟수를 입력해주세요! (1, 2, 3...)', 1, help='시도 횟수는 음수값을 입력하지 말아주세요!')
@@ -26,10 +31,23 @@ def main():
 
     helptip = '- 표의 우측 하단을 잡고 당기거나 표 영역에서 스크롤을 내리면 더 많은 정보를 볼 수 있어요!'
     st.title('※ 확률값 상세', help=helptip)
-    st.write(pd.DataFrame({
-        '성공 횟수':xList,
-        '성공 확률':yList,
-        }))
+    
+    # 표로 표현해줄 데이터 형태 정의
+    df = pd.DataFrame({
+        'SuccessCount':xList,
+        'SuccessProb':yList,
+        })
+    
+    csv = convert_df(df)
+    fName = st.text_input('저장될 csv의 파일명을 입력하세요!', 'ResultSimul', help='파일 확장자(.csv)는 붙이지 않아도 됩니다') + '.csv'
+
+    st.download_button(
+        label='Download data', 
+        data=csv, 
+        file_name=fName,
+        mime='text/csv')
+    
+    st.write(df.style.format())
 
 if __name__ == "__main__":
     main()
